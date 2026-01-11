@@ -42,7 +42,7 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
                 return NotFound();
             }
 
-            // Populează checkbox-urile
+           
             PopulateAssignedServiceData(_context, Pet);
 
             ViewData["OwnerID"] = new SelectList(_context.Owner, "ID", "Name");
@@ -70,7 +70,7 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
                 return NotFound();
             }
 
-            // Actualizează serviciile bifate
+           
 
             if (await TryUpdateModelAsync<Pet>(
                 petToUpdate,
@@ -83,7 +83,7 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
                 return RedirectToPage("./Index");
             }
 
-            // Dacă apare o eroare, refacem checkbox-urile
+           
             PopulateAssignedServiceData(_context, petToUpdate);
             ViewData["OwnerID"] = new SelectList(_context.Owner, "ID", "Name", petToUpdate.OwnerID); 
             ViewData["VetID"] = new SelectList(_context.Vet, "ID", "FullName", petToUpdate.VetID);

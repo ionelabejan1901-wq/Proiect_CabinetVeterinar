@@ -30,12 +30,11 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
         {
             VetID = vetId;
 
-            // Dropdown pentru medici
             Vets = new SelectList(_context.Vet, "ID", "FullName");
 
             PetD = new PetData();
 
-            // Include toate relațiile necesare
+            
             var pets = _context.Pet
                 .Include(p => p.Owner)
                 .Include(p => p.Vet)
@@ -45,7 +44,7 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
                 .OrderBy(p => p.Name)
                 .AsQueryable();
 
-            // Filtrare după medic (opțional)
+            
             if (vetId != null)
             {
                 pets = pets.Where(p => p.VetID == vetId);
@@ -53,7 +52,6 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
 
             PetD.Pets = await pets.ToListAsync();
 
-            // Dacă un animal este selectat, afișăm serviciile lui
             if (id != null)
             {
                 PetID = id.Value;

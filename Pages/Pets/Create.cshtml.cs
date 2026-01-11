@@ -36,7 +36,7 @@ namespace Proiect_CabinetVeterinar.Pages.Pets
         [BindProperty]
         public Pet Pet { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+       
         public async Task<IActionResult> OnPostAsync(string[] selectedServices)
         {
             var newPet = new Pet();

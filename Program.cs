@@ -4,14 +4,14 @@ using Proiect_CabinetVeterinar.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔹 Configurare baza de date
+
 builder.Services.AddDbContext<Proiect_CabinetVeterinarContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("Proiect_CabinetVeterinarContext")
         ?? throw new InvalidOperationException("Connection string 'Proiect_CabinetVeterinarContext' not found.")
     ));
 
-// 🔹 Configurare Identity + roluri
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -19,7 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<Proiect_CabinetVeterinarContext>();
 
-// 🔹 Razor Pages + protejare foldere
+
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Pets");
@@ -29,10 +29,9 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AllowAnonymousToPage("/Services/Details");
 });
 
-// 🔹 Adăugare suport pentru API controllers
+
 builder.Services.AddControllers();
 
-// 🔹 Activare CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -43,9 +42,8 @@ builder.Services.AddCors(options =>
     });
 });
 
-var app = builder.Build(); // 🔸 Acum putem folosi 'app'
+var app = builder.Build(); 
 
-// 🔹 Seed pentru roluri și cont Admin
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -78,7 +76,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// 🔹 Configurare pipeline
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -90,12 +88,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowAll"); // 🔸 CORS după routing
+app.UseCors("AllowAll"); 
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapControllers(); // 🔸 Mapăm rutele API
+app.MapControllers(); 
 
 app.Run();

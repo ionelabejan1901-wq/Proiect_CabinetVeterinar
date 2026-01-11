@@ -27,7 +27,7 @@ namespace Proiect_CabinetVeterinar.Pages.Owners
         [BindProperty]
         public Owner Owner { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
