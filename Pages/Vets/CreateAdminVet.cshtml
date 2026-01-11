@@ -1,0 +1,30 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Vets.CreateAdminVetModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<h2>Înregistrare Veterinar (Admin)</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.FirstName"></label>
+        <input asp-for="Input.FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.LastName"></label>
+        <input asp-for="Input.LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Specialization"></label>
+        <input asp-for="Input.Specialization" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" class="form-control" type="password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Creează Veterinar</button>
+</form>

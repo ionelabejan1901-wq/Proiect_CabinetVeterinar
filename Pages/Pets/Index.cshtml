@@ -1,0 +1,64 @@
+﻿@page "/"
+@model Proiect_CabinetVeterinar.Pages.Pets.IndexModel
+
+@{
+    ViewData["Title"] = "Pets";
+}
+
+<h1>Lista Animale</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PetD.Pets.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.PetD.Pets.First().Species)</th>
+            <th>@Html.DisplayNameFor(model => model.PetD.Pets.First().Breed)</th>
+            <th>@Html.DisplayNameFor(model => model.PetD.Pets.First().BirthDate)</th>
+            <th>Proprietar</th>
+            <th>Veterinar</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model.PetD.Pets)
+{
+    string selectedRow = "";
+    if (item.ID == Model.PetID)
+    {
+        selectedRow = "table-success";
+    }
+
+    <tr class="@selectedRow">
+        <td>@item.Name</td>
+        <td>@item.Species</td>
+        <td>@item.Breed</td>
+        <td>@item.BirthDate.ToShortDateString()</td>
+        <td>@(item.Owner?.Name ?? "—")</td>
+        <td>@(item.Vet?.FullName ?? "—")</td>
+
+        <td>
+            <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
+            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+
+@if (Model.PetD.Services != null)
+{
+    <h3>Servicii pentru animalul selectat</h3>
+    <ul>
+        @foreach (var service in Model.PetD.Services)
+        {
+            <li>@service.ServiceName</li>
+        }
+    </ul>
+}

@@ -1,0 +1,80 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Pets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.Species)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Species)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.Breed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Breed)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.BirthDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.BirthDate)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.Owner.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Owner.Name)
+        </dd>
+
+        <dt class="col-sm-2">Medic veterinar</dt>
+        <dd class="col-sm-10">
+            @(Model.Pet.Vet != null
+                        ? $"{Model.Pet.Vet.LastName} {Model.Pet.Vet.FirstName}"
+                        : "—")
+        </dd>
+
+        <dt class="col-sm-2">Servicii</dt>
+        <dd class="col-sm-10">
+            @if (Model.Pet.PetServices != null && Model.Pet.PetServices.Any())
+            {
+                <ul>
+                    @foreach (var ps in Model.Pet.PetServices)
+                    {
+                        <li>@ps.Service.ServiceName</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>—</span>
+            }
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pet.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

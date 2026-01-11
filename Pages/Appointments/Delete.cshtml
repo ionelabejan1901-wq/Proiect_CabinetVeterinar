@@ -1,0 +1,35 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Appointments.DeleteModel
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize(Roles = "Admin")]
+
+@{
+    ViewData["Title"] = "Șterge Programare";
+}
+
+<h1>Șterge Programare</h1>
+
+<h3>Ești sigur că vrei să ștergi această programare?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Data</dt>
+        <dd class="col-sm-9">@Model.Appointment.AppointmentDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Stăpân</dt>
+        <dd class="col-sm-9">@Model.Appointment.Owner?.Name</dd>
+
+        <dt class="col-sm-3">Animal</dt>
+        <dd class="col-sm-9">@Model.Appointment.Pet?.Name</dd>
+
+        <dt class="col-sm-3">Serviciu</dt>
+        <dd class="col-sm-9">@Model.Appointment.Service?.ServiceName</dd>
+    </dl>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Appointment.ID" />
+    <input type="submit" value="Șterge" class="btn btn-danger" />
+    <a asp-page="Index" class="btn btn-secondary">Renunță</a>
+</form>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proiect_CabinetVeterinar", "Proiect_CabinetVeterinar.csproj", "{1C38F51C-D711-4835-97CB-364B4C53E10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proiect_CabinetVeterinar.Mob", "..\Proiect_CabinetVeterinar.Mob\Proiect_CabinetVeterinar.Mob.csproj", "{72365BE2-2936-444D-B0B2-17B90F77127A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C38F51C-D711-4835-97CB-364B4C53E10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C38F51C-D711-4835-97CB-364B4C53E10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C38F51C-D711-4835-97CB-364B4C53E10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C38F51C-D711-4835-97CB-364B4C53E10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72365BE2-2936-444D-B0B2-17B90F77127A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B236D04F-927F-4125-B6C7-77578C1C5948}
+	EndGlobalSection
+EndGlobal

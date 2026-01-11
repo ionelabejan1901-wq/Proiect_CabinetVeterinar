@@ -1,0 +1,43 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Vets.CreateModel
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize(Roles = "Admin")]
+
+
+
+<h4>Vet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vet.FirstName" class="control-label"></label>
+                <input asp-for="Vet.FirstName" class="form-control" />
+                <span asp-validation-for="Vet.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vet.LastName" class="control-label"></label>
+                <input asp-for="Vet.LastName" class="form-control" />
+                <span asp-validation-for="Vet.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vet.Specialization" class="control-label"></label>
+                <input asp-for="Vet.Specialization" class="form-control" />
+                <span asp-validation-for="Vet.Specialization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,30 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Appointments.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii Programare";
+}
+
+<h1>Detalii Programare</h1>
+
+<div>
+    <h4>Programare</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Data</dt>
+        <dd class="col-sm-9">@Model.Appointment.AppointmentDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Stăpân</dt>
+        <dd class="col-sm-9">@Model.Appointment.Owner?.Name</dd>
+
+        <dt class="col-sm-3">Animal</dt>
+        <dd class="col-sm-9">@Model.Appointment.Pet?.Name</dd>
+
+        <dt class="col-sm-3">Serviciu</dt>
+        <dd class="col-sm-9">@Model.Appointment.Service?.ServiceName</dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="Edit" asp-route-id="@Model.Appointment.ID" class="btn btn-primary">Editează</a>
+    <a asp-page="Index" class="btn btn-secondary">Înapoi</a>
+</div>

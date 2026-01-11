@@ -1,0 +1,45 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Vets.DetailsModel
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Vet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vet.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vet.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vet.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vet.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vet.Specialization)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vet.Specialization)
+        </dd>
+    </dl>
+    <h4>Animale tratate</h4>
+    <ul>
+        @foreach (var pet in Model.Vet.Pets)
+        {
+            <li>@pet.Name (@pet.Species)</li>
+        }
+    </ul>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Vet.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

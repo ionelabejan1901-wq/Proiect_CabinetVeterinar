@@ -1,0 +1,67 @@
+﻿@page "{id:int?}"
+@model Proiect_CabinetVeterinar.Pages.Services.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Servicii</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Service Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ServiceData.Services)
+        {
+            string selectedRow = item.ID == Model.ServiceID ? "table-success" : "";
+
+            <tr class="@selectedRow">
+                <td>@item.ServiceName</td>
+                <td>
+                    <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.ServiceData.Pets != null)
+{
+    <h3>Pets using selected service</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Species</th>
+                <th>Owner</th>
+                <th>Vet</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model.ServiceData.Pets)
+            {
+                <tr>
+                    <td>@pet.Name</td>
+                    <td>@pet.Species</td>
+                    <td>@pet.Owner?.Name</td>
+                    <td>
+                        @(pet.Vet != null
+                                        ? $"{pet.Vet.LastName} {pet.Vet.FirstName}"
+                                        : "—")
+            </td>
+        </tr>
+                }
+        </tbody>
+    </table>
+}

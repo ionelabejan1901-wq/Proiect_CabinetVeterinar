@@ -1,0 +1,40 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Appointments.IndexModel
+
+@{
+    ViewData["Title"] = "Programări";
+}
+
+<h1>Programări</h1>
+
+<p>
+    <a asp-page="Create">Adaugă Programare Nouă</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Stăpân</th>
+            <th>Animal</th>
+            <th>Serviciu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Appointment)
+        {
+            <tr>
+                <td>@item.AppointmentDate.ToShortDateString()</td>
+                <td>@item.Owner?.Name</td>
+                <td>@item.Pet?.Name</td>
+                <td>@item.Service?.ServiceName</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Șterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

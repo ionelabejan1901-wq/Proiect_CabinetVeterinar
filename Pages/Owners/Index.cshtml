@@ -1,0 +1,38 @@
+﻿@page
+@model Proiect_CabinetVeterinar.Pages.Owners.IndexModel
+
+@{
+    ViewData["Title"] = "Stăpâni";
+}
+
+<h1>Stăpâni</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nume</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Owner)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>
+
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
